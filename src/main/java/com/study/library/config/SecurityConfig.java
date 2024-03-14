@@ -1,13 +1,20 @@
 package com.study.library.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity // Security기존적용 -> 세팅 Security따라가라.
 @Configuration //ioc에등록 Config컴포넌트-Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() { // bean 이름
+        return new BCryptPasswordEncoder();// new 하면서 ioc에 등록
+    } // autowired를 통해서 DI
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
