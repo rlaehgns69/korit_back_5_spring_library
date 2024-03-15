@@ -28,10 +28,10 @@ public class AuthController {
 //    @ParamsPrintAspect
     @PostMapping("/signup") // dto 유효한지 확인하고 결과를 bindingResult
     public ResponseEntity<?> signup(@Valid @RequestBody SignupReqDto signupReqDto, BindingResult bindingResult) { //BeanPropertyBindingResult(업)
-        if(authService.isDuplcatedByUsername(signupReqDto.getUsername())) {
-            ObjectError objectError = new FieldError("username", "username", "이미 존재하는 사용자이름입니다.");
-            bindingResult.addError(objectError);
-        }
+//        if(authService.isDuplcatedByUsername(signupReqDto.getUsername())) {
+//            ObjectError objectError = new FieldError("username", "username", "이미 존재하는 사용자이름입니다.");
+//            bindingResult.addError(objectError);
+//        }
 
 
         // 정규식 이후 중복확인
