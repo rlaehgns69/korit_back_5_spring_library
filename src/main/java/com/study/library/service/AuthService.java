@@ -54,7 +54,7 @@ public class AuthService {
         if(user == null) {
             throw new UsernameNotFoundException("사용자 정보를 확인하세요.");
         }
-        if(passwordEncoder.matches(signinReqDto.getPassword(), user.getPassword())) { //  id, pass word 입력 요청때들고온 / 사용자 pwd
+        if(!passwordEncoder.matches(signinReqDto.getPassword(), user.getPassword())) { //  id, pass word 입력 요청때들고온 / 사용자 pwd
             throw new BadCredentialsException("사용자 정보를 확인하세요.");
         }
         // 사용자 정보를 확인하세요.(id, pwd 든)
@@ -63,7 +63,7 @@ public class AuthService {
         //원래는 유저네임이랑 비멀번호같이
         // JWT
         
-        return jwtProvider.generateToken(null);
+        return jwtProvider.generateToken(authentication);
     }
 }
 

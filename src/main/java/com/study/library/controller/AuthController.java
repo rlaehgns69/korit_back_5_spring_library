@@ -41,7 +41,7 @@ public class AuthController {
     }
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody SigninReqDto signinReqDto) {
-
         return ResponseEntity.ok(authService.signin(signinReqDto));
+        // key 응답 나옴. signinRequest
     }
 }
