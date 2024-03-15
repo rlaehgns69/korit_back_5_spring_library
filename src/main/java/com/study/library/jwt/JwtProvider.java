@@ -1,5 +1,6 @@
 package com.study.library.jwt;
 
+import com.study.library.entity.User;
 import com.study.library.security.PrincipalUser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -23,16 +24,16 @@ public class JwtProvider {
         key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }// 요키값으로 풀고 /암호화 할거다 -Jwt 고정
 
-    public String generateToken(Authentication authentication) {
+    public String generateToken(User user) {
 
 
 
 
-        PrincipalUser principalUser = (PrincipalUser) authentication.getPrincipal();
+//        PrincipalUser principalUser = (PrincipalUser) authentication.getPrincipal();
 
-        int userId = principalUser.getUserId();
-        String username = principalUser.getUsername(); //이 두개의 정보
-        Collection<? extends GrantedAuthority> authorities = principalUser.getAuthorities(); // 권한 추가
+        int userId = user.getUserId();
+        String username = user.getUsername(); //이 두개의 정보
+        Collection<? extends GrantedAuthority> authorities = user.getAuthorities(); // 권한 추가
         Date expiredDate = new Date(new Date().getTime() + (1000 * 60 * 60 * 24)); //만료시간
         // new Date 현재날짜의시간(지금시간)을 가지고 와서 하루를 더해라 -하루가 더해진 날짜객체가 만들어진다.
         // new Date(날짜+하루)=미래시간 만료날짜

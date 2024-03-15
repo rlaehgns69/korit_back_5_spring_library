@@ -59,11 +59,11 @@ public class AuthService {
         }
         // 사용자 정보를 확인하세요.(id, pwd 든)
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user.toPrincipalUser(),""); // Security문법 signinReqDto.getUsername(),->user
-        //원래는 유저네임이랑 비멀번호같이
-        // JWT
+//        Authentication authentication = new UsernamePasswordAuthenticationToken(user.toPrincipalUser(),""); // Security문법 signinReqDto.getUsername(),->user
+//        원래는 유저네임이랑 비멀번호같이
+//         JWT
         
-        return jwtProvider.generateToken(authentication);
+        return jwtProvider.generateToken(user);
     }
 }
 
