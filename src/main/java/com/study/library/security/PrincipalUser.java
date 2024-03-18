@@ -29,6 +29,11 @@ public class PrincipalUser implements UserDetails {
         return ""; // 빈값
     }
 
+    //@Override
+//    public String getUsername() {
+//        return null;
+//    }
+
     // 계정 사용기간 만료
     @Override
     public boolean isAccountNonExpired() {

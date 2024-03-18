@@ -50,7 +50,7 @@ public class AuthService {
     }
 
     public String signin(SigninReqDto signinReqDto) {
-        User user = userMapper.findUserByUsername((signinReqDto.getUsername())); //user객체
+        User user = userMapper.findUserByUsername(signinReqDto.getUsername()); //user객체
         if(user == null) {
             throw new UsernameNotFoundException("사용자 정보를 확인하세요.");
         }
